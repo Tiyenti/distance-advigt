@@ -79,7 +79,7 @@ while True:
         time.sleep(0.1)
         log.seek(where)
     else:
-        if line.startswith('Loaded Scene: GameMode, Mode: Adventure'):
+        if line.startswith('>>> Loaded Scene: GameMode, Mode: Adventure'):
             print(f'[log] {line}')
 
             if started == True:
@@ -88,16 +88,16 @@ while True:
                 curtime = (progress.stats.modes_offline[9] - timeoffset)
                 print(f'{previousLevelName} | {pretty_time(segtime)} | {pretty_time(curtime)}')
 
-            protolevelname = line[48:]
+            protolevelname = line[52:]
             previousLevelName = protolevelname[:protolevelname.index(',')]
 
-            if 'Broken Symmetry' in line:
+            if 'Instantiation' in line:
                 print('-- Started')
                 started = True
             elif 'Credits' in line:
                 print('-- Credits level loaded - marking as full run')
                 isfullrun = True
-        elif line.startswith('Loaded Scene: MainMenu'):
+        elif line.startswith('>>> Loaded Scene: MainMenu'):
             print(f'[log] {line}')
             if isfullrun:
                 print(f'-- Run complete')
