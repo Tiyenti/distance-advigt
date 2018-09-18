@@ -79,7 +79,8 @@ while True:
         time.sleep(0.1)
         log.seek(where)
     else:
-        if line.startswith('>>> Loaded Scene: GameMode, Mode: Adventure'):
+        if line.startswith('>>> Loaded Scene: GameMode, Mode: Adventure') or \
+           line.startswith('>>> Loaded Scene: GameMode, Mode: Lost to Echoes'):
             print(f'[log] {line}')
 
             if started == True:
@@ -88,14 +89,18 @@ while True:
                 curtime = (progress.stats.modes_offline[9] - timeoffset)
                 print(f'{previousLevelName} | {pretty_time(segtime)} | {pretty_time(curtime)}')
 
-            protolevelname = line[52:]
+            if 'Adventure' in line:
+                index = 52
+            elif 'Lost to Echoes' in line:
+                index = 57
+            protolevelname = line[index:]
             previousLevelName = protolevelname[:protolevelname.index(',')]
 
-            if 'Instantiation' in line:
+            if 'Instantiation' or 'Long Ago' in line:
                 print('-- Started')
                 started = True
-            elif 'Credits' in line:
-                print('-- Credits level loaded - marking as full run')
+            elif 'Credits' or 'Echoes' in line:
+                print('-- Credits/Echoes loaded - marking as full run')
                 isfullrun = True
         elif line.startswith('>>> Loaded Scene: MainMenu'):
             print(f'[log] {line}')
