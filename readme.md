@@ -1,6 +1,6 @@
 # Distance adventure IGT
 Simple script that shows your current adventure mode run's IGT according to your save data after
-each level is completed. This allows you to see the in-game time for your rub without having
+each level is completed. This allows you to see the in-game time for your run without having
 to make a new profile every time. It also shows you more decimal places (3 compared to the
 1 showed in the game).
 
