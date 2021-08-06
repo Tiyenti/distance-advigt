@@ -7,7 +7,7 @@ to make a new profile every time. It also shows you more decimal places (3 compa
 ## How to use
 Short and sweet:  
     
-    $ git clone https://github.com/TntMatthew/distance-advigt.git
+    $ git clone https://github.com/Tiyenti/distance-advigt.git
     $ pip install distanceutils
     $ python advigt.py
 
